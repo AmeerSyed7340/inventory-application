@@ -4,5 +4,7 @@ const asyncHandler = require("express-async-handler")
 
 //index
 exports.index = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: item index")
+    res.render('index', {
+        title: "Inventory Application",
+    });
 });
