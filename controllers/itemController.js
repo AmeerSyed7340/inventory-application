@@ -19,3 +19,13 @@ exports.index = asyncHandler(async (req, res, next) => {
         category_count: numCategories
     });
 });
+
+//display item_list on GET
+exports.item_list = asyncHandler(async (req, res, next) => {
+    const allItems = await Item.find().exec();
+
+    res.render("item_list", {
+        title: "Item List",
+        item_list: allItems
+    })
+})
