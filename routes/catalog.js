@@ -15,6 +15,12 @@ router.get("/items", item_controller.item_list);
 router.get("/item/create", item_controller.item_create_get);
 
 //GET all categeories
-router.get('/categories', category_controller.category_list)
+router.get('/categories', category_controller.category_list);
+
+//category_create on GET
+router.get("/category/create", category_controller.category_create_get);
+
+
+
 
 module.exports = router;

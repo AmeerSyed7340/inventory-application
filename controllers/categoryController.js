@@ -10,3 +10,10 @@ exports.category_list = asyncHandler(async (req, res, next) => {
         category_list: allCategories
     })
 })
+
+//create new category on GET
+exports.category_create_get = asyncHandler(async(req, res, next) => {
+    res.render("category_form", {
+        title: 'Create Category'
+    })
+})
