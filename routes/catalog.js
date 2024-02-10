@@ -8,4 +8,6 @@ const item_controller = require("../controllers/itemController");
 //GET catalog homepage
 router.get("/", item_controller.index);
 
+// router.get("/category", category_controller.index);
+
 module.exports = router;
