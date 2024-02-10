@@ -29,3 +29,13 @@ exports.item_list = asyncHandler(async (req, res, next) => {
         item_list: allItems
     })
 })
+
+//create new item with POST
+exports.item_create_get = asyncHandler(async(req, res, next) => {
+    const allCategories = await Category.find().exec();
+
+    res.render("item_form", {
+        title: 'Create Item',
+        categories: allCategories
+    })
+})

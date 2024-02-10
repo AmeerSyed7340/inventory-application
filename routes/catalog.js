@@ -11,6 +11,9 @@ router.get("/", item_controller.index);
 //GET all items
 router.get("/items", item_controller.item_list);
 
+//item_create on GET
+router.get("/item/create", item_controller.item_create_get);
+
 //GET all categeories
 router.get('/categories', category_controller.category_list)
 
