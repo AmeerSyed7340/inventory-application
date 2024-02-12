@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 
 const Category = require("../models/category");
+const Item = require("../models/item");
 
 const asyncHandler = require("express-async-handler")
 
@@ -51,16 +52,41 @@ exports.category_create_post = [
         else {
             // Data from form is valid.
             // Check if Cat3egory with same name already exists.
-            const categoryExists = await Category.findOne({name: req.body.name}).exec();
-            if(categoryExists){
+            const categoryExists = await Category.findOne({ name: req.body.name }).exec();
+            if (categoryExists) {
                 //Category exists, redirect to its detail page
                 res.redirect(categoryExists.url);
             }
-            else{
+            else {
                 await category.save();
                 //New Category saved. Redirect to category detail page.
                 res.redirect(category.url);
             }
         }
+        })
+    ]
+
+    exports.category_detail = asyncHandler(async(req, res, next) => {
+        //get details of cartegory and all items of that category
+        const [category, itemsInCategory] = await Promise.all(
+            [
+                Category.findById(req.params.id).exec(),
+                Item.find({
+                    category: req.params.id
+                })
+            ]
+        );
+
+        if (category === null){
+            //no results
+            const err = new Error("Category not found");
+            err.status = 404;
+            return next(err);
+        }
+
+        res.render("category_detail", {
+            title: "Category Detail",
+            category: category,
+            category_items: itemsInCategory
+        })
     })
-]
