@@ -20,7 +20,8 @@ router.get('/categories', category_controller.category_list);
 //category_create on GET
 router.get("/category/create", category_controller.category_create_get);
 
-
+//category_create on POST
+router.post("/category/create", category_controller.category_create_post);
 
 
 module.exports = router;
