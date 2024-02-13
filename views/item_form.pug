@@ -7,6 +7,19 @@ block content
     div.form-group
       label(for='name') Name:
       input#name.form-control(type='text', placeholder='Name of item' name='name' required value=(undefined===item ? '' : item.name) )
+
+    div.form-group
+      label(for='description') Description:
+      input#description.form-control(type='text', placeholder='Description of item' name='description' required value=(undefined===item ? '' : item.description) )
+
+    div.form-group
+      label(for='price') Price:
+      input#price.form-control(type='number', placeholder='Price of item' name='price' required value=(undefined===item ? '' : item.price) )
+
+    div.form-group
+      label(for='number_in_stock') In Stock:
+      input#number_in_stock.form-control(type='number', placeholder='Enter a number for: In stock' name='number_in_stock' required value=(undefined===item ? '' : item.number_in_stock) )
+
     div.form-group
       label Category:
       div
