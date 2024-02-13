@@ -58,6 +58,18 @@ exports.item_create_post =
         .trim()
         .isLength({min: 1})
         .escape(),
+    body("description", "Description must not be empty")
+        .trim()
+        .isLength({min: 1})
+        .escape(),
+    body("price", "Price must not be empty")
+        .trim()
+        .isLength({min: 1})
+        .escape(),
+    body("number_in_stock", "Please provide the number of items in stock")
+        .trim()
+        .isLength({min: 1})
+        .escape(),
     body("category.*").escape(),
 
     //Process request after validation and sanitization: [2]
@@ -69,7 +81,9 @@ exports.item_create_post =
         const item = new Item(
             {
                 name: req.body.name,
-                description: "test Desc",
+                description: req.body.description,
+                price: req.body.price,
+                number_in_stock: req.body.number_in_stock,
                 category: req.body.category
             }
         );
